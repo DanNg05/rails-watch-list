@@ -1,0 +1,7 @@
+<h1>Your <%= @list.name %> list</h1>
+<h2>Your bookmark list</h2>
+<ul>
+  <%@list.bookmarks.each do |b| %>
+    <li><%= b.comment %></li>
+  <% end %>
+</ul>

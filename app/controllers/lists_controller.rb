@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show]
   def index
     @lists = List.all
   end
@@ -12,27 +12,19 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(set_list)
+    @list = List.new(list_params)
     if @list.save
       redirect_to list_path(@list)
     else
       render :new
     end
-
-    def edit
-
-    end
-
-    def update
-      @list.update(set_list)
-      redirect_to list_path(@list)
-    end
-
-    def destroy
-      @list.destroy
-      redirect_to lists_path, status: :see_other
-    end
   end
+
+  # def update
+  #   @list = List.new(list_params)
+
+  # end
+
   private
 
   def list_params
@@ -40,6 +32,6 @@ class ListsController < ApplicationController
   end
 
   def set_list
-    @list = List.find(param[:id])
+    @list = List.find(params[:id])
   end
 end
