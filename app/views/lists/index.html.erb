@@ -1,10 +1,18 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-  Breakfast
+<div class="card-category" style="">
+  Show time: Relax after hard working day with your watch list😊
 </div>
 
-<h1>Your list</h1>
-<ul>
-<%@lists.each do |list| %>
-<li><%= list.name %></li>
-<% end %>
-</ul>
+
+<div class="container">
+  <h1>My lists</h1>
+  <div>
+    <ul class="movie-list">
+      <%@lists.each do |list| %>
+      <li class="movie-card"><%= list.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <%= link_to "Create a movie list", new_list_path, class:"list-create" %>
+  </div>
+</div>
