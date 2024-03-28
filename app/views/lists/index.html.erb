@@ -1,3 +1,11 @@
+<div class="top-bar">
+  <div>
+    <span class="left-corner">🍿🍵</span>
+  </div>
+  <div>
+    <%= link_to "New List", new_list_path, class: "right-corner" %>
+  </div>
+</div>
 <div class="card-category" style="">
   Show time: Relax after hard working day with your watch list😊
 </div>
@@ -8,7 +16,15 @@
   <div>
     <ul class="movie-list">
       <%@lists.each do |list| %>
-      <li class="movie-card"><%= list.name %></li>
+        <% if list.photo.attached? %>
+          <li class="movie-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            <%= link_to list.name, list_path(list) %>
+          </li>
+        <%else %>
+          <li class="movie-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1567263361507-83f755d9fa97?q=80&w=3388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+            <%= link_to list.name, list_path(list) %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

@@ -1,7 +1,21 @@
-<h1>Your <%= @list.name %> list</h1>
-<h2>Your bookmark list</h2>
-<ul>
-  <%@list.bookmarks.each do |b| %>
-    <li><%= b.comment %></li>
-  <% end %>
-</ul>
+<div class="top-bar">
+  <div>
+    <span class="left-corner">🍿🍵</span>
+  </div>
+  <div>
+    <%= link_to "New List", new_list_path, class: "right-corner" %>
+    <%= link_to "Delete list", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "right-corner" %>
+  </div>
+</div>
+<div class="card-category" style="">
+  <%= @list.name %>
+</div>
+
+<div class="container">
+  <h2>Your bookmark list</h2>
+  <ul>
+    <%@list.bookmarks.each do |b| %>
+      <li><%= b.comment %></li>
+    <% end %>
+  </ul>
+</div>
