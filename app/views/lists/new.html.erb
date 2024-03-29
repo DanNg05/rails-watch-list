@@ -14,7 +14,7 @@
   <h1>Add your new list here</h1>
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <%= f.input :image, as: :file %>
+    <%= f.submit class:"btn btn-primary" %>
   <% end %>
 </div>
